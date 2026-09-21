@@ -1,0 +1,27 @@
+AI Chatbot Project Knowledge Base
+
+Project overview:
+This project is a full-stack AI chatbot demonstration built with Python, FastAPI, REST APIs, LangChain, OpenAI LLM APIs, RAG, Chroma vector database, SQLAlchemy, SQLite, HTML, CSS and JavaScript.
+
+Technology stack:
+Backend: Python, FastAPI, Pydantic, SQLAlchemy.
+AI: OpenAI LLM API, LangChain, embeddings, Retrieval-Augmented Generation (RAG).
+Vector database: Chroma.
+Database: SQLite through SQLAlchemy. The database layer can be changed to PostgreSQL through DATABASE_URL.
+Frontend: HTML5, CSS3 and vanilla JavaScript using the Fetch API.
+Deployment: Ubuntu Linux on AWS EC2, Uvicorn and Git/GitHub.
+
+How RAG works:
+Documents are loaded from the data directory, split into overlapping chunks, converted to vector embeddings, and stored in Chroma. When a user asks a question, the application retrieves semantically similar chunks and sends them as context to the LLM. The LLM generates an answer grounded in that retrieved context.
+
+API endpoints:
+GET /health checks application health.
+POST /api/chat accepts a message and returns an AI response and retrieved source information.
+GET /api/history/{session_id} returns stored conversation messages.
+POST /api/admin/reindex rebuilds the RAG index from files in the data directory.
+
+Security notes:
+The OpenAI API key is stored in an environment variable and must never be committed to GitHub. Production deployments should use a managed secret store, authentication, HTTPS, rate limiting, logging, and stricter network rules.
+
+Interview explanation:
+The browser sends a REST request to FastAPI. FastAPI passes the question to the RAG service. The retriever searches Chroma using embeddings. The relevant context is inserted into a LangChain prompt and sent to the OpenAI LLM. The response is returned as JSON and displayed by the JavaScript frontend. Conversation messages are persisted with SQLAlchemy.

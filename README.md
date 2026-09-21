@@ -38,6 +38,6 @@ Allow TCP 8000 in the EC2 security group for a temporary recruiter demo. For pro
 docker compose up --build
 ```
 
-## Interview explanation
+## Project explanation
 
 “I built a full-stack AI chatbot where the frontend is HTML, CSS and JavaScript and the backend is Python FastAPI. For AI, I integrated an OpenAI LLM through LangChain. I used RAG so the user's question is converted into a retrieval query, relevant chunks are fetched from a Chroma vector database, and that context is passed to the LLM before generating the answer. I also added REST endpoints, health checks, conversation persistence using SQLAlchemy/SQLite, and Docker support. The application can be deployed on Ubuntu EC2 with Uvicorn.”
